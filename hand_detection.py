@@ -16,7 +16,6 @@ class HandDetection:
 
     def hand_detecting(self, image):
         self.hand_closed = False
-        print("OTWARTAAA")
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         image.flags.writeable = False
         self.results = self.hands.process(image)
@@ -30,11 +29,19 @@ class HandDetection:
                 self.hand_x = int(x * 1280)#SCREEN_WIDTH)
                 self.hand_y = int(y * 720)#SCREEN_HEIGHT)
 
-                x1, y1 = hand_landmarks.landmark[12].x, hand_landmarks.landmark[12].y
+                x2, y2 = hand_landmarks.landmark[8].x, hand_landmarks.landmark[8].y
+                x3, y3 = hand_landmarks.landmark[12].x, hand_landmarks.landmark[12].y
+                x4, y4 = hand_landmarks.landmark[16].x, hand_landmarks.landmark[16].y
+                x5, y5 = hand_landmarks.landmark[20].x, hand_landmarks.landmark[20].y
 
-                if y1 > y:
-                    self.hand_closed = True
-                    print("ZAMKNIETAAA")
+                if y3 > y:
+                    if y4 > y and y5 > y and y2 < y:
+                        print("JEDENNN")
+                    else:
+                        self.hand_closed = True
+                        print("ZAMKNIETAAA")
+                else:
+                    print("OTWARTAAA")
 
                 mp_drawing.draw_landmarks(
                     image,
