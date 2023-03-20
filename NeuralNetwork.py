@@ -37,7 +37,7 @@ if not os.path.exists("training_images.npy"):
     np.save("training_labels", training_labels)
 
 # uczenie
-'''
+
 
 training_images = np.load("training_images.npy")
 training_labels = np.load("training_labels.npy")
@@ -61,7 +61,7 @@ model.fit(training_images, training_labels, epochs=10, validation_split=0.1, bat
 
 model.save('shape_classifier.model')
 
-'''
+
 
 
 # testowanie
