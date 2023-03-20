@@ -11,7 +11,7 @@ categories = ["triangle", "square"]
 
 # dane do trenowania
 if not os.path.exists("training_images.npy"):
-    data_dir = "D:\ZPO\Gra_vision-voice\images"
+    data_dir = "F:\Gra_vision-voice\images"
     img_size = 400
     training_data = []
 
@@ -66,8 +66,8 @@ model.save('shape_classifier.model')
 
 # testowanie
 model = models.load_model('shape_classifier.model')
-for img in os.listdir("D:\ZPO\Gra_vision-voice\images\square"):
-    img_test = cv2.imread(os.path.join("D:\ZPO\Gra_vision-voice\images\square", img), cv2.IMREAD_GRAYSCALE)
+for img in os.listdir("F:\Gra_vision-voice\images\square"):
+    img_test = cv2.imread(os.path.join("F:\Gra_vision-voice\images\square", img), cv2.IMREAD_GRAYSCALE)
     new_img_test = cv2.resize(img_test, (400, 400))
     prediction = model.predict(np.array([new_img_test]) / 255)
     index = np.argmax(prediction)
